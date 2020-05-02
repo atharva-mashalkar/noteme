@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= note.Title %></title>
+  <!-- head ---------------------------- -->
+     <%- include('./common/head') -%> 
+  <!-- head closed --------------------- --> 
+</head>
+<body>
+  <!-- Navbar ------------------------ -->
+     <%- include('./common/navfornote') -%> 
+  <!-- Navbar closed ----------------- -->  
+  
+  <form class="col-8 col-md-6 mt-4 mx-auto">
+  <div class="form-group">
+    <label for="Title">Title</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%=note.Title%>" style = "color: #210152" readonly>
+  </div>
+  <div class="form-group">
+    <label for="Category"  >Category</label>
+    <select class="form-control" name = 'Category' id="exampleFormControlSelect1" style = "color: #210152" readonly>
+      <option style = "color: #210152"  value = 'Work'
+       <%if(note.Category === 'Work'){ %>
+        selected
+        <% }else{ %>
+        disabled
+        <%}%>
+        >Work</option>
+      <option style = "color: #210152"  value = 'Personal'
+       <% if(note.Category === 'Personal'){%>
+        selected
+        <% }else{ %>
+        disabled
+        <%}%>
+        >Personal</option>
+      <option style = "color: #210152"  value = 'Family' 
+      <% if(note.Category === 'Family'){%>
+      selected 
+      <% }else{ %>
+        disabled
+        <%}%>
+      >Family</option>
+      <option style = "color: #210152"  value = 'Other'
+       <% if(note.Category === 'Other'){%>
+       selected 
+       <% }else{ %>
+        disabled
+        <%}%>
+       >Other</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Content" >Content</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" name="Content" required readonly style = "color: #210152"><%= note.Content %></textarea>
+  </div >
+  <div class="form-group" style="display: none;">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required name="Email" value="<%= note.Email %>" >
+  </div>
+</form>
+
+
+  <!-- Bootstrap script tags ------------------------ -->
+     <%- include('./common/bootstrapScript') -%> 
+  <!-- Bootstrap script tags closed ----------------- --> 
+  
+</body>
+</html>
+
+
+

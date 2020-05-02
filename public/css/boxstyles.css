@@ -1,0 +1,16 @@
+.box{
+	display:grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	grid-gap:10px;
+	grid-auto-flow:row;
+	background-color: #e9ecef
+}
+
+.item{
+	transition: all;
+	box-shadow: 6px 6px 6px #585858;
+}
+
+.item:hover{
+	transform: scale(1.05);
+}

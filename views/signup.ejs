@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup</title>
+  <!-- head ---------------------------- -->
+     <%- include('./common/head') -%> 
+  <!-- head closed --------------------- --> 
+</head>
+<body style="background-color: #e9ecef; color: #210152 ; font-family: 'Raleway', sans-serif;">
+
+  <!-- Navbar ------------------------ -->
+     <%- include('./common/navforsigning') -%> 
+  <!-- Navbar closed ----------------- -->
+
+
+    
+  <form method="POST" autocomplete="off" action="/signup" class="col-8 col-md-6 mt-4 mx-auto">
+
+    <!-- Message -------------------------- -->
+    <%- include('./common/message') -%>
+    <!-- Message ends --------------------- -->
+    
+  <div class="form-group">
+    <label for="FirstName" >First Name</label>
+    <input type="text" name = "FirstName" class="form-control" id="exampleInputPassword1"  placeholder="First Name" value="<%= typeof FirstName != 'undefined' ? FirstName : '' %>" style = "color: #210152">
+  </div>
+
+  <div class="form-group">
+    <label for="LastName">Last Name</label>
+    <input type="text" name="LastName" class="form-control" id="exampleInputPassword1"  placeholder="Last Name" value="<%= typeof LastName != 'undefined' ? LastName : '' %>" style = "color: #210152">
+  </div>
+
+  <div class="form-group">
+    <label for="Email">Email Id</label>
+    <input type="email" name="Email" class="form-control" id="exampleInputPassword1"  placeholder="Email Id" value="<%= typeof Email != 'undefined' ? Email : '' %>" style = "color: #210152">
+  </div>
+
+  <div class="form-group" >
+    <label for="Password">Password</label>
+    <input type="password" name="Password" class="form-control" id="password"  placeholder="Password" value="<%= typeof Password != 'undefined' ? Password : '' %>" style = "color: #210152">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" style = "color: #210152">Show Password</label>
+  </div>
+
+  <div class="form-group" >
+    <label for="Password2">Confirm Password</label>
+    <input type="password" name="Password2" class="form-control" id="password2"  placeholder="Confirm Password" value="<%= typeof Password2 != 'undefined' ? Password2 : '' %>" style = "color: #210152">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck2">
+    <label class="form-check-label" >Show Password</label>
+  </div>
+  <button type="submit" class="btn rounded-pill text-white hov2" style="background: #5C4480">Submit</button>
+</form>
+  <!-- Bootstrap script tags ------------------------ -->
+     <%- include('./common/bootstrapScript') -%> 
+  <!-- Bootstrap script tags closed ----------------- -->
+  <script type="text/javascript">
+    let pass = document.getElementById('exampleCheck1');
+    let pass2 = document.getElementById('exampleCheck2');
+
+    pass.addEventListener("click" , () => {
+      if(document.getElementById('password').type === "password"){
+        document.getElementById('password').type = "text";
+      }else{
+        document.getElementById('password').type = "password" ;
+      }
+    });
+
+    pass2.addEventListener("click" , () => {
+      if(document.getElementById('password2').type === "password"){
+        document.getElementById('password2').type = "text";
+      }else{
+        document.getElementById('password2').type = "password" ;
+      }
+    });
+  </script>
+</body>
+</html>

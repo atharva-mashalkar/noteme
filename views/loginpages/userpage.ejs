@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= user.FirstName %></title>
+
+	<!-- head ---------------------------- -->
+	   <%- include('../common/head') -%> 
+	<!-- head closed --------------------- --> 
+
+</head>
+<body style="background-color: #e9ecef;">
+
+	<!-- Navbar ------------------------ -->
+	   <%- include('../common/navforuser') -%> 
+	<!-- Navbar closed ----------------- -->
+
+  <!-- Message -------------------------- -->
+    <%- messages('messages_in_session', locals) -%>
+  <!-- Message ends --------------------- -->
+  	
+	<div class="jumbotron jumbotron-fluid text-center" style="color: #5C4480 ; font-family: 'Raleway', sans-serif;">
+  		<div class="container">
+
+    		<h1 class="display-4">Welcome <span style="font-family: 'Modak', cursive;color: #210152;font-size:5rem"><%= user.FirstName %> <%= user.LastName %></span></h1>
+
+    	<br>
+
+    		<h3 class="lead" style="font-size:2rem ">Click on the 
+    			<span style="color: #210152;font-family: 'Modak', cursive;font-size:2.5rem">
+    			note title
+    		</span> 
+    		to 
+    		<span style="color: #210152;font-family: 'Modak', cursive;font-size:2.5rem">
+    		view 
+    	</span>
+    	the  
+    	<span style="color: #210152;font-family: 'Modak', cursive;font-size:2.5rem">note</span></h3>
+  		</div>
+	</div>	
+
+	<div class = "box " >
+	<% notes.forEach(note => { %>
+		<div class="item " style="color: #210152 ; font-family: 'Raleway', sans-serif;">
+		<div class="card" >
+  			<div class="card-body" style="height:18rem ">
+    			<h5 class="card-title "><a href="/note/:<%= note._id %> " style="color: #210152 ;font-family: 'Modak', cursive; font-size: 2rem"><%= note.Title %></a></h5>
+    			<h6 class="card-subtitle mb-2 "><%= note.Category %></h6>
+    			<p class="card-text "><%= note.Content.slice(0,70).padEnd(75,'.') %></p>
+    			<p class="card-text " style="font-size: 1.2rem;">Created on : <span style="color: #210152 ;font-family: 'Modak', cursive; font-size: 1.3rem"><%= note.CurrentDate %></span></p>
+    			<a href="/updatenote/:<%= note._id %>" class="card-link hov4" style="color: #210152 ;font-family: 'Modak', cursive; font-size: 1.5rem">Update Note</a>
+    			<a href="/deletenote/:<%= note._id %>" class="card-link hov4" style="color: #210152 ;font-family: 'Modak', cursive; font-size: 1.5rem">Delete Note</a>
+    		</div>
+		</div>
+		</div>		    		
+	<% }) %>
+	</div>
+	
+	<div style="display: grid; grid-template-columns:repeat(7, 1fr);grid-gap: 10px;">
+
+	<a style= "margin-top:20px; grid-area:1/4/2/5;justify-self:center;" href='/createnote/:<%=user.Email %> '> 
+		<button   class="btn rounded-pill text-white hov2" style="background: #5C4480" >Add New Note</button>
+	</a>
+	</div>
+
+	<!-- Bootstrap cript tags ------------------------ -->
+	   <%- include('../common/bootstrapScript') -%> 
+	<!-- Bootstrap script tags closed ----------------- --> 
+	
+</body>
+</html>

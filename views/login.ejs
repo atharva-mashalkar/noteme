@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <!-- head ---------------------------- -->
+     <%- include('./common/head') -%> 
+  <!-- head closed --------------------- --> 
+</head>
+<body style="background-color: #e9ecef; color: #210152 ; font-family: 'Raleway', sans-serif;">
+  <!-- Navbar ------------------------ -->
+     <%- include('./common/navforsigning') -%> 
+  <!-- Navbar closed ----------------- -->
+
+  <form method="POST" autocomplete="off" action="/login" class="col-8 col-md-6 mt-4 mx-auto">
+
+  <!-- Message -------------------------- -->
+    <%- include('./common/message') -%>
+  <!-- Message ends --------------------- -->
+
+
+
+  <div class="form-group">
+    <label for="Email">Email Id</label>
+    <input type="email" name="Email" class="form-control" id="exampleInputPassword1"  placeholder="Email Id" style = "color: #210152">
+  </div>
+
+  <div class="form-group ">
+    <label for="Password">Password</label>
+    <input type="password" class="form-control " id="password"  name="Password" placeholder="Password" style = "color: #210152">
+  </div>
+
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Show Password</label>
+  </div>
+
+  <button type="submit" class="btn rounded-pill text-white hov2" style="background: #5C4480">Confirm Identity</button>
+
+  </form>
+
+  <!-- Bootstrap script tags ------------------------ -->
+     <%- include('./common/bootstrapScript') -%> 
+  <!-- Bootstrap script tags closed ----------------- -->
+
+    <script type="text/javascript">
+    let pass = document.getElementById('exampleCheck1');
+    pass.addEventListener("click" , () => {
+      if(document.getElementById('password').type === "password"){
+        document.getElementById('password').type = "text";
+      }else{
+        document.getElementById('password').type = "password" ;
+      }
+    });
+  </script>
+
+</body>
+</html>
