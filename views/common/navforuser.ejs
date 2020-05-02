@@ -17,11 +17,31 @@
     <div class="form-group">
         <label for="Category text-white hov">Category</label>
         <select name = "Category" class="form-control" id="exampleFormControlSelect1" style = "color: #210152">
-          <option  value = 'All' style = "color: #210152">All</option>
-          <option  value = 'Work' style = "color: #210152">Work</option>
-          <option  value = 'Personal' style = "color: #210152">Personal</option>
-          <option  value = 'Family' style = "color: #210152">Family</option>
-          <option  value = 'Other' style = "color: #210152">Other</option>
+          <option style = "color: #210152"  value = 'All'
+       <%if(Category === 'All'){ %>
+        selected
+        <% } %>
+        >All</option>
+          <option style = "color: #210152"  value = 'Work'
+       <%if(Category === 'Work'){ %>
+        selected
+        <% } %>
+        >Work</option>
+      <option style = "color: #210152"  value = 'Personal'
+       <% if(Category === 'Personal'){%>
+        selected
+        <% } %>
+        >Personal</option>
+      <option style = "color: #210152"  value = 'Family' 
+      <% if(Category === 'Family'){%>
+      selected 
+      <%}%>
+      >Family</option>
+      <option style = "color: #210152"  value = 'Other'
+       <% if(Category === 'Other'){%>
+       selected 
+       <%}%>
+       >Other</option>
         </select>
       </div>      
       <div class="form-group" style="display:none">

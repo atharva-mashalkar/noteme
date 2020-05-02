@@ -26,10 +26,11 @@ module.exports = (app) => {
 	//get user account details
 
 	app.get('/user/:Email',ensureAuthenticated, (req,res) => {
+			let Category = 'All'
 			NoteMeSignup.findOne({Email : req.params.Email.slice(1)},(err , data) => {
     			if(err) throw err
     			NotesContent.find({Email : req.params.Email.slice(1)},(err,notes) => {
-    			res.render('./loginpages/userpage', {user: data, notes : notes});
+    			res.render('./loginpages/userpage', {user: data, notes : notes , Category : Category});
     			});
 			});	
 	});
@@ -104,15 +105,16 @@ module.exports = (app) => {
 	app.post('/usersearch' ,(req,res) => {
 		NoteMeSignup.findOne({Email:req.body.Email},(err,data) => {
     		if(err) throw err;
+    		let Category = req.body.Category;
     		if(req.body.Category === 'All'){
     			NotesContent.find({ Email : req.body.Email},(err,notes) => {
 	    			if(err) throw err;
-	    			res.render('./loginpages/userpage', {user: data, notes : notes});
+	    			res.render('./loginpages/userpage', {user: data, notes : notes, Category : Category});
     			});
     		}else{
     			NotesContent.find({Category : req.body.Category , Email : req.body.Email},(err,notes) => {
 	    			if(err) throw err;
-	    			res.render('./loginpages/userpage', {user: data, notes : notes});
+	    			res.render('./loginpages/userpage', {user: data, notes : notes , Category :Category});
     			});
     		}
     	});	
